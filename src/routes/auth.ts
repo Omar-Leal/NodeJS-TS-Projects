@@ -1,9 +1,10 @@
 import { Router } from 'express'
+import { signIn, signUp, profile } from '../controllers/auth.controller'
+
 
 const authRoute: Router =  Router();
-
-authRoute.get('/', ( req, res ) => {
-  res.send('auth route created')
-})
+      authRoute.post( '/signup', signUp );
+      authRoute.post( '/signin', signIn );
+      authRoute.get( '/profile', profile );
 
 export default authRoute;
