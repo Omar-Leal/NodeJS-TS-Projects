@@ -1,7 +1,18 @@
 import { Request, Response } from 'express'
+import userModel, { IUserData } from '../models/user'
+import userToken from 'jsonwebtoken'
 
-export const signUp = ( request: Request, response: Response ) => {
-  console.log( ' what is the response =>', request.body )
+export const signup = async ( request: Request, response: Response ) => {
+   /** Saving the user Data! */
+   const user: IUserData = new userModel({
+      username: request.body.username,
+      email: request.body.email,
+      password: request.body.password   
+  });
+  const savedUserData = await user.save();
+  
+  // creating TOKEN
+  userToken.sign( { _id: savedUserData._id 'sasasas',    } )
    response.send('just sign up');
 };
 

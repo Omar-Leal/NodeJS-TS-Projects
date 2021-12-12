@@ -9,12 +9,14 @@ const app: Application = express();
 //*** Setting server (ports) */
 app.set( 'port', 4000 );
 
-/** routes to app */
-app.use( '/api/auth', authRoute );
 
 //** middleware  */
 app.use(morgan('dev'));
-app.use(express.json())
+app.use(express.json());
+
+/** routes to app */
+app.use( '/api/auth', authRoute );
+
 
 
 
